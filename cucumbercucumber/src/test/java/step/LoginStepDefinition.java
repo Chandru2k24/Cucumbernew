@@ -19,6 +19,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginStepDefinition {
+	
 	WebDriver driver;
 	@Before("@chrome")
 	public void setup() {
@@ -34,10 +35,10 @@ public class LoginStepDefinition {
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
-	@Before("@edge")
+	@Before("@chrome")
 	public void setup2() {
 //		System.out.println("---------------Before Executing---------------");
-		driver=new EdgeDriver();
+		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
