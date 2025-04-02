@@ -19,10 +19,13 @@
 @tag
 Feature: Login Feature
   I want to use my feature file for testing saucedemo application
+  
+  Background:
+  Given I am in the suacedemo website
 
-  @ValidCredentials
+  @ValidCredentials @valid
   Scenario: Login feature with valid credentials
-    Given I am in the suacedemo website
+    #Given I am in the suacedemo website
     Then I provide valid username
     And I provide valid password
     When I click Login
@@ -30,7 +33,7 @@ Feature: Login Feature
 
   @InvalidCredentials(username)
   Scenario: Login feature with Invalid credentials
-     Given I am in the suacedemo website
+     #Given I am in the suacedemo website
     Then I provide Invalid username
     And I provide valid password
     When I click Login
@@ -38,7 +41,7 @@ Feature: Login Feature
     
     @InvalidCredentials(password)
   Scenario: Login feature with Invalid credentials
-     Given I am in the suacedemo website
+    # Given I am in the suacedemo website
     Then I provide valid username
     And I provide Invalid password
     When I click Login
@@ -46,7 +49,7 @@ Feature: Login Feature
     
     @InvalidCredentials(no-username)
   Scenario: Login feature with Invalid credentials
-     Given I am in the suacedemo website
+    # Given I am in the suacedemo website
      Then I provide no username
     And I provide valid password
     When I click Login
@@ -54,7 +57,7 @@ Feature: Login Feature
     
     @InvalidCredentials(no-password)
   Scenario: Login feature with Invalid credentials
-     Given I am in the suacedemo website
+     #Given I am in the suacedemo website
     Then I provide valid username
     And I provide no password
     When I click Login
