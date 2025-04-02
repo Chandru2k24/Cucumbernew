@@ -2,7 +2,7 @@ package RunnerFile;
 
 import io.cucumber.testng.AbstractTestNGCucumberTests;
 import io.cucumber.testng.CucumberOptions;
-@CucumberOptions(plugin = {"pretty","html:target/cucumber-reports/Cucumber.html"}, features="src/test/resources/com/feature/SaucedemoLogin.feature",
+@CucumberOptions(plugin = {"pretty","json:target/cucumber-reports/Cucumber.json"}, features="src/test/resources/com/feature/SaucedemoLogin.feature",
 glue="step")
 public class RunnerTestNG extends AbstractTestNGCucumberTests {
 
