@@ -6,20 +6,42 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 
+import io.cucumber.java.After;
+import io.cucumber.java.AfterStep;
+import io.cucumber.java.Before;
+import io.cucumber.java.BeforeStep;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 
 public class LoginStepDefinition {
-	WebDriver driver=new ChromeDriver();
+	WebDriver driver;
+	
+	@Before
+	public void setup() {
+		System.out.println("------------Before Executing------------");
+		//WebDriverManager.chromedriver().setup();
+		driver=new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+				}
+	@BeforeStep
+	public void beforestep() {
+		System.out.println("-----------Before step---------");
+	}
+	@AfterStep
+	public void afterstep() {
+		System.out.println("----------AfterStep------------");
+	}
+	//WebDriver driver=new ChromeDriver();
 		@Given("I am in the suacedemo website")
 		public void i_am_in_the_suacedemo_website() {
 		    // Write code here that turns the phrase above into concrete actions
 			driver.get("https://www.saucedemo.com/");
-			driver.manage().window().maximize();
-			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+			
 			
 		}
 
@@ -104,9 +126,11 @@ public class LoginStepDefinition {
 		    String expected=error.getText();
 		    Assert.assertEquals(actual, expected);
 		}
-
-	public static void main(String[] args) {
+		@After
 		// TODO Auto-generated method stub
+		public void teardown() {
+			System.out.println("---------After Execution---------");
+			driver.quit();
 
 	}
 
