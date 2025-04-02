@@ -6,7 +6,8 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 
 import io.cucumber.java.After;
@@ -19,24 +20,38 @@ import io.cucumber.java.en.When;
 
 public class LoginStepDefinition {
 	WebDriver driver;
-	
-	@Before
+	@Before("@chrome")
 	public void setup() {
-		System.out.println("------------Before Executing------------");
-		//WebDriverManager.chromedriver().setup();
+//		System.out.println("---------------Before Executing---------------");
 		driver=new ChromeDriver();
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-				}
-	@BeforeStep
-	public void beforestep() {
-		System.out.println("-----------Before step---------");
 	}
-	@AfterStep
-	public void afterstep() {
-		System.out.println("----------AfterStep------------");
+	@Before("@firefox")
+	public void setup1() {
+//		System.out.println("---------------Before Executing---------------");
+		driver=new FirefoxDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 	}
-	//WebDriver driver=new ChromeDriver();
+	@Before("@edge")
+	public void setup2() {
+//		System.out.println("---------------Before Executing---------------");
+		driver=new EdgeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+	}
+	
+//	@BeforeStep
+//	public void beforestep() {
+//		System.out.println("---------------Before Step---------------");
+//	}
+//	
+//	@AfterStep
+//	public void afterstep() {
+//		System.out.println("---------------After Step---------------");
+//	}
+	
 		@Given("I am in the suacedemo website")
 		public void i_am_in_the_suacedemo_website() {
 		    // Write code here that turns the phrase above into concrete actions
@@ -126,12 +141,10 @@ public class LoginStepDefinition {
 		    String expected=error.getText();
 		    Assert.assertEquals(actual, expected);
 		}
+		
 		@After
-		// TODO Auto-generated method stub
 		public void teardown() {
-			System.out.println("---------After Execution---------");
+			System.out.println("---------------After Executed---------------");
 			driver.quit();
-
-	}
-
+		}
 }
