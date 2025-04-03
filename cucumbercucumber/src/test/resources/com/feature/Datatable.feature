@@ -26,4 +26,6 @@ Feature: Login to HRM application
     #|Admin|admin123|
     |Username|Password|ErrorMessage|
     |Admin11|adfaf|Invalid credentials|
+    |Admin12|amkfm|Invalid  credentials|
+    
     #Then User should be able to login successfully and new page open

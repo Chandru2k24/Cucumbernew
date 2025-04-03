@@ -43,6 +43,11 @@ public class DataTableStep {
 	    List<Map<String, String>> user=dataTable.asMaps(String.class, String.class);
 //	    String Username=signUpForm.get(0).get(0);
 //	    String Password=signUpForm.get(0).get(1);
+	    for(Map<String, String> form : user) {
+	    	String userName= form.get("Username");
+	    	System.out.println("Username:"+userName);
+	    	
+	    }
 	    String Username=user.get(0).get("Username");
 	    System.out.println("Username: "+Username);
 	    driver.findElement(By.name("username")).sendKeys(Username);
